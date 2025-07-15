@@ -1,0 +1,16 @@
+.particleContainer{
+    height:100%;
+    width:100%;
+    overflow:"hidden";
+    position:"relative";
+    border :1px solid "#ff6567"
+}
+
+.particleSubContainer{
+    top:0;
+    left:0;
+    position:"absolute";
+    height:100%;
+    width:100%;
+  
+}
