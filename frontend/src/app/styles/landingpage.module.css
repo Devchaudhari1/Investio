@@ -1,0 +1,15 @@
+.header {
+    display : "block";
+    background-color:ultramarine;
+    width:viewport-width;
+    height:100px;
+
+}
+
+.mainContainer {
+    display:"grid";
+    grid-template-columns:"block";
+    background-color:rgb(14, 30, 93);    
+    width:viewport-width;
+    height:viewport-height;
+}
