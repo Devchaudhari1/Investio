@@ -1,6 +1,7 @@
 const express =require('express');
 const cors = require('cors');
 const path = require('path');
+const {Route}=require('./routes/routes.js');
 const app =express();
 app.use(cors())
 app.use(express.json());
@@ -19,3 +20,5 @@ app.get('/api/images',(req,res)=>{
 app.listen(PORT,(req,res)=>{
     console.log(`Server is listening on port http://localhost:${PORT}`);
 });
+
+app.get('/')

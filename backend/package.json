@@ -12,6 +12,9 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^17.0.1",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "fs": "^0.0.1-security",
+    "onnxruntime-node": "^1.27.0",
+    "yahoo-finance2": "^4.0.0"
   }
 }
