@@ -1,28 +1,31 @@
-import AntlerBackground from "../components/backgrounds/antlerbackground";
-import styles from "./styles/styles.module.css";
-import Image from "next/image"
-export default function Page() {
+'use client';
+import React, {useState} from "react";
+import FusionStar from "../components/backgrounds/fusionstar";
+import styles from "./styles/nifty.module.css";
+import Prediction from "./prediction";
+import RadioCard from "./radio";
+import NiftyProvider from "./nifty.context";
+import PredictionChart from "./predictionChart";
+function App() {
   return (
-    <main className = {`${styles.particleContainer}`}>
-      <div className= {`${styles.heading}`}>
-        <Image src= "/assets/icons/grid.png" alt= "Icon" height ={30} width= {30} className = {`${styles.imageContainer}`}></Image>
-        <h1 className = {`${styles.textContainer}`}>Investio</h1>
-
-        <Image src= "/assets/icons/arrow-pointing-down.png" alt ="Menu" height ={30} width= {30} className= {`${styles.menu}`} ></Image>
-      </div>
-      <div className = {`${styles.subheading}`}>
-          <button id="bell" className = {`${styles.buttonCon} ${styles.bell}`}><Image src="/assets/icons/bell.png" alt = "Chat button" height ={4} width ={16} className = {`${styles.headbutton}`} ></Image><h1> Subscribe</h1></button>
-
-          <button id="arrow" className = {`${styles.buttonCon} ${styles.arrow}`}><Image src="/assets/icons/arrow-icon-png.png" alt = "Chat button" height ={4} width ={16} className = {`${styles.headbutton}`} ></Image><h1>Navigate</h1></button>
-      </div>
-      <div className = {`${styles.mainContainer}`}>
-        <div className={`${styles.sidepane}`}>
-          <ul>Home</ul>
-          <ul>About</ul>
-          <ul>View</ul>
+    <main className={`${styles.mainContainer}`}>
+      <div className={`${ styles.header}`}>Nifty</div>
+      <NiftyProvider>
+      <div className={`${styles.contentContainer}`}>
+        <div className={`${styles.radioContainer}`}>
+          <RadioCard/>
         </div>
-        <AntlerBackground/>
       </div>
+      <div className={`${styles.predictionContainer}`}>
+      <Prediction />
+      </div>
+      <div className={`${styles.chartContainer}`}>
+      <PredictionChart/>
+      </div>
+      </NiftyProvider>
+      
     </main>
   );
 }
+
+export default App;
