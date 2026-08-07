@@ -1,4 +1,4 @@
-import CommodityProvider , {CommodityContext} from "./commodity.context";
+import ForexProvider , {ForexContext} from "./forex.context";
 import { useContext , useMemo, useState } from "react";
 import {
   LineChart,
@@ -12,7 +12,7 @@ import {
 
 export default function PredictionChart()
 {
-  const {commodity,historical, setHistorical}= useContext(CommodityContext)!;
+  const {forex,historical, setHistorical}= useContext(ForexContext)!;
   const chartData = useMemo(()=> {
  const data =historical.map(d => ({
   date: new Date(d.date).toLocaleDateString("en-IN", {

@@ -1,0 +1,70 @@
+.mainContainer {
+    background-color:rgb(8, 20, 45);
+    color:white;
+    border:1px solid black;
+    justify-content: center;
+}
+
+.header {
+    display:grid;
+    background-color:rgb(42, 155, 155);
+    color:white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    height: 50px;
+    text-align: center;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    border: 1px solid black;
+}
+
+.radioContainer {
+    display:grid;
+    columns:3;
+    height:230px;
+    width:1280px;
+    background-color: rgb(6, 28, 48);
+    border-radius:5px;
+    border: 1px solid black;
+    margin-left: 50px;
+}
+
+.radioButton {
+  column-width: 220px;
+  column-gap: 24px;
+  height: 220px;
+}
+
+.radioButton label {
+  display: block;
+  break-inside: avoid;
+  margin-bottom: 8px;
+}
+
+.contentContainer {
+    margin-left: 20px;
+    display:grid;
+    align-items:center;
+    justify-content: center;
+
+}
+
+.predictionContainer {
+    display: flex;
+    flex-direction:row;
+    justify-content:center;
+    margin-top: 20px;
+    margin-right:20px;
+    margin-left:20px;
+}
+
+.chartContainer {
+    display:block;
+    align-items:center;
+    justify-content:center;
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right:20px;
+
+
+}

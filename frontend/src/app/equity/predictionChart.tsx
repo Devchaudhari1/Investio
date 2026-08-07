@@ -19,7 +19,7 @@ export default function PredictionChart()
     month: "short",
     day: "numeric"
   }),
-  close: d.close
+  close: d.close.toFixed(2)
 }));
 const last =historical.at(-1);
 if(last)
