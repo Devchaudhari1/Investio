@@ -1,7 +1,7 @@
 
-const {conn} = require('../db.js');
-const getUsers = (req , res) =>{
-     conn.query(`Select * from users`,(err,result)=>{
+const {conn} = require('../supabase.js');
+const getUsers = async (req , res) =>{
+     await conn.query(`Select * from users`,(err,result)=>{
         if(err)
         {
             console.error(`Failed to retrieve users: ${err}`)
@@ -12,9 +12,9 @@ const getUsers = (req , res) =>{
 
     });
 }
-const addUser =  (req , res) => {
+const addUser =  async (req , res) => {
     const userDetails = req.body;
-    conn.query(`Insert into users(id , name ,password) values (?,?,?)`, [userDetails], (err,result)=>{
+    await conn.query(`Insert into users(id , name ,password) values (?,?,?)`, [userDetails], (err,result)=>{
         if(err)
         {
             console.error(`An error occured : ${err}`);

@@ -1,68 +1,68 @@
+'use client';
+
 import React from "react";
 import Particles, { ParticlesProvider } from "@tsparticles/react";
-import styles from "./styles/message.module.css";
 import { particlesInit } from "./particlesInit";
 // possible parameters can be int , float , string or boolean or objects made of them not constants/identifiers
 const option :any= {
     autoPlay:true,
-    polygon:{
-            enable:true,
-            type:"inline",
-            draw :{
-                enable:true,
-                stroke:{
-                    color:"#ffffff",
-                    width:1,
-                    opacity:0.1,
-                },
-            },
-            inline: {
-                arrangement: "equidistant"
-            },
-            move: {
-                radius:31,
-                type:"path",
-            },
-            scale:1,
-            url:"paint-palette-art.svg",
-            position:{
-                x:50 ,
-                y:50
-            }
-        },
     background:{
         color:{
             value: "#000000"
         },
-    image:"",
+    // image:"url(http://localhost:5000/uploads/smalldeer.svg)",
     position: "50% 50%",
     repeat:"no-repeat",
     size: "cover",
     opacity:1,
     },
+     polygon:{
+            enable:true,
+            type:"inline",
+            url:"/smalldeer.svg",
+
+            draw :{
+                enable:true,
+                stroke:{
+                    color:"#ffffff",
+                    width:1,
+                    opacity:0.3,
+                },
+            },
+         
+            move: {
+                radius:30,
+                type:"path",
+            },
+            scale:0.5,//scales the svg image to appropriate dimension
+            inline:{
+                arrangement:"equidistant"
+            }
+            
+        },
 
     backgroundMask:{
         composite:"destination-out" as GlobalCompositeOperation,
         cover:{
-            opacity:1,
+            opacity:0.1,
             color:{
-                value:"",
+                value:"#000000",
             }
         },
-        enable:false,
+        // enable:true,
     },
     clear:true,
     // defaultThemes:{},
     delay:0,
     fullScreen:{
-        enable:true ,
-        zIndex:0
+        enable:true,
+        zIndex:-1
     },
     detectRetina:true,
     duration:0,
-    fpsLimit:120,
+    fpsLimit:60,
     interactivity:{
-        detectsOn:"window",
+        detectsOn:"canvas",
         events:{
             onHover:{
                 enable:true,
@@ -275,10 +275,9 @@ const option :any= {
                         enable:true,
                         minimumValue:0.1
                     },
-                    value:0
+                    value:2
                 },
                 enable:true,
-                generator: "polynomialPathGenerator"
             },
             outModes:{
                 default:"bounce",
@@ -290,8 +289,8 @@ const option :any= {
             random:false,
             speed:1,
             spin:{
-                acceleration:3,
-                enable:true
+                acceleration:0,
+                enable:false
             },
             straight:false,
             trail:{
@@ -314,7 +313,7 @@ const option :any= {
                 mode:"delete",
                 value:0
             },
-            value: 200,
+            value: 300,
         },
         opacity:{
             value:{
@@ -357,7 +356,7 @@ const option :any= {
                 width:0,
             },
             zIndex:{
-                value:0,
+                value:1,
                 opacityRate:1,
                 sizeRate:1,
                 velocityRate:1
@@ -446,16 +445,14 @@ const option :any= {
                 value:true,
             },
         },
-        
+       
 };
 
-const FusionStar: React.FC = () => {
+const AntlerBackground: React.FC = () => {
     return (
         <ParticlesProvider init={particlesInit}>
-            <div className={`${styles.feature}`}>
-                <Particles id="antler" options={option} />
-            </div>
+            <Particles id="antler" options={option} />
         </ParticlesProvider>
     );
 };
-export default FusionStar;
+export default AntlerBackground;

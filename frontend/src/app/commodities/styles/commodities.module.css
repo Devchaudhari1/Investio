@@ -1,0 +1,70 @@
+.mainContainer {
+    background-color:rgb(8, 20, 45);
+    color:white;
+    border:1px solid black;
+    justify-content: center;
+}
+
+.header {
+    display:grid;
+    background-color:rgb(42, 155, 155);
+    color:white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    height: 50px;
+    text-align: center;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    border: 1px solid black;
+}
+
+.radioContainer {
+    display:grid;
+    height:200px;
+    width:160px;
+    grid-template-columns: 2fr 2fr 2fr;
+    background-color: rgb(6, 28, 48);
+    border-radius:5px;
+    border: 1px solid black;
+    margin-left: 50px;
+}
+
+.radioButton {
+    border-radius: 5px;
+    margin-left: 20px;
+    width:250px;
+    display:flex;
+    flex-direction: column;
+    word-spacing: 10px;
+    align-items:left;
+    justify-content: center;
+}
+
+.contentContainer {
+    margin-left: 20px;
+    display:grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    align-items:center;
+    justify-content: center;
+
+}
+
+.predictionContainer {
+    display: flex;
+    flex-direction:row;
+    justify-content:center;
+    margin-top: 20px;
+    margin-right:20px;
+    margin-left:20px;
+}
+
+.chartContainer {
+    display:block;
+    align-items:center;
+    justify-content:center;
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right:20px;
+
+
+}

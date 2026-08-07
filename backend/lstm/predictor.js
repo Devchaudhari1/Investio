@@ -2,7 +2,7 @@
 
 const fs = require("fs");
 const ort = require("onnxruntime-node");
-const yahooFinance = require("yahoo-finance2").default;
+const YahooFinance = require("yahoo-finance2").default;
 
 class LSTMStockPredictor {
   /**
@@ -87,7 +87,8 @@ class LSTMStockPredictor {
     // pull extra calendar days to comfortably cover `lookback` *trading* days
     const period1 = new Date();
     period1.setDate(period1.getDate() - Math.ceil(lookback * 1.6) - 5);
-
+    console.log(`Predicting ${ticker}`);
+    const yahooFinance= new YahooFinance({suppressNotices:['yahooSurvey']});
     const history = await yahooFinance.chart(ticker, { period1, interval: "1d" });
 
     const quotes = (history.quotes || []).filter(
@@ -98,6 +99,8 @@ class LSTMStockPredictor {
         q.close != null &&
         q.volume != null
     );
+
+
 
     if (quotes.length < lookback) {
       throw new Error(
@@ -111,12 +114,13 @@ class LSTMStockPredictor {
       low: q.low,
       close: q.close,
       volume: q.volume,
+      date:q.date
     }));
 
     const predictedClose = await this.predictNextClose(lastN);
     const lastActual = lastN[lastN.length - 1].close;
     const lastDate = quotes[quotes.length - 1].date;
-
+    // console.log(`Predicted value: ${predictedClose}`);
     return {
       ticker,
       lastDate,
@@ -124,6 +128,7 @@ class LSTMStockPredictor {
       predictedNextClose: predictedClose,
       predictedChange: predictedClose - lastActual,
       predictedChangePct: ((predictedClose - lastActual) / lastActual) * 100,
+      history:lastN,
     };
   }
 }
