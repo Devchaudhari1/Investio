@@ -2,11 +2,14 @@ import {useCallback} from "react";
 import Particles, {ParticlesProvider} from "@tsparticles/react";
 import type {Engine} from "@tsparticles/engine";
 import {loadFull } from "tsparticles"
+
+import styles from './styles/particles.module.css'
 // react-tsparticles and ts-particles must be of same version
 export default function ParticleBackground(){
     const particlesInit = useCallback(async (engine:any)=>{ await loadFull(engine)},[]);
-    return(<ParticlesProvider init={particlesInit}>
-        <Particles id="tsparticles" 
+    return(
+    <ParticlesProvider init={particlesInit} >
+        <Particles id="tsparticles" className={`${styles.particles}`}
             options={{
                 fullScreen:{enable:false,zIndex:-1},
                 particles:{
@@ -39,5 +42,6 @@ export default function ParticleBackground(){
             background:{
                 color:"#000000"
             },
-        }} /> </ParticlesProvider>);
+        }} ></Particles> </ParticlesProvider>
+        );
 }

@@ -1,4 +1,4 @@
-const {conn} =require('../db');
+const {conn} =require('../supabase');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const { v4: uuidv4 }= require('uuid');

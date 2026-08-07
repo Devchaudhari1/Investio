@@ -48,7 +48,7 @@
     display:grid;
     height:100px;
     grid-template-rows:1fr 3fr 1fr;
-    grid-template-columns:2fr 4fr 2fr;
+    grid-template-columns:2fr 4fr 2fr 2fr 2fr;
     place-items:center;
     align-items:center;
     background-color:#001f08;
@@ -81,4 +81,34 @@
 .mainContainer{
     width:viewport-width;
 
+}
+
+
+.dataContainer {
+  position: relative;
+  padding-top:20px;
+  padding-left:30px;
+  padding-right:30px;
+  z-index: 1;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+
+.particles {
+  height:100%;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.cardContainer {
+    display:grid;
+    grid-template-columns: 4fr 1fr 4fr;
+    justify-content: center;
+    align-items: center;
 }

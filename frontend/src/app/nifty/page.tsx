@@ -1,4 +1,4 @@
-import AntlerBackground from "../components/antlerbackground";
+import AntlerBackground from "../components/backgrounds/antlerbackground";
 import styles from "./styles/styles.module.css";
 import Image from "next/image"
 export default function Page() {

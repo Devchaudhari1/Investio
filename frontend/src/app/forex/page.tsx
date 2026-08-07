@@ -1,10 +1,10 @@
 
 
-export default function DerivativesPage() {
+export default function ForexPage() {
     return (
         <main>
             <div>
-                <header>Derivatives</header>
+                <header>Forex</header>
             </div>
         </main>
     )

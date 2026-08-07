@@ -1,0 +1,44 @@
+.mainContainer {
+    display: grid;
+    background-color:rgb(8, 20, 45);
+    border:1pxsolid black;
+    border-radius:5px;
+    width: 500px;
+    height: 370px;
+}
+
+.header {
+    display:grid;
+    background-color:rgb(42, 155, 155);
+    color:white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: medium;
+    width: 500px;
+    height: 50px;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    border: 1px solid black;
+}
+
+.headerText {
+    text-align: center;
+}
+
+.mainContainer {
+    position: relative;
+    overflow: hidden;
+    color:white;
+    background-image: url("/commodity-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+}
+
+.mainContainer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    color:white;
+    background: rgba(0,0,0,0.65);
+}
+
