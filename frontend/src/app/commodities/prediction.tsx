@@ -17,7 +17,7 @@ export default function Prediction() {
     
 };
   const {commodity, setCommodity,historical, setHistorical} = useContext(CommodityContext)!; 
-  const [predictedPrice, setPredictedPrice] = useState(null);
+  const [predictedPrice, setPredictedPrice] = useState<number|null>(null);
 
   useEffect(() => {
     const fetchPredictedPrice = async () => {

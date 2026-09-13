@@ -26,7 +26,7 @@ if(last)
 {
   data.push({
   date: "Prediction",
-  close: historical[historical.length-1].close
+  close: historical[historical.length-1].close.toFixed(2)
 });
 }
 return data;

@@ -22,7 +22,7 @@ export default function Prediction() {
     
 };
   const {equity, setEquity,historical, setHistorical} = useContext(EquityContext)!; 
-  const [predictedPrice, setPredictedPrice] = useState(null);
+  const [predictedPrice, setPredictedPrice] = useState<number|null>(null);
 
   useEffect(() => {
     const fetchPredictedPrice = async () => {
