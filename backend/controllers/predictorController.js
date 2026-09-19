@@ -4,26 +4,34 @@ const path=require('path');
 const onnxPath = path.join(__dirname, '..','lstm','onnx_export','lstm_model.onnx');
 const scalerConfigPath= path.join(__dirname, '..','lstm','onnx_export','scaler_config.json'); 
 const predictor = new LSTMStockPredictor(onnxPath, scalerConfigPath);
+const {redis,  connectRedis} = require('../redis.js');
 
 
-const CACHE_TTL_MS = 15 * 60 * 1000; // 15 minutes
-const cache = new Map(); // ticker -> { result, expiresAt }
+const CACHE_TTL = 15 * 60 ; // 15 minutes
 
- const predict = async (req, res) => {
+const predict = async (req, res) => {
+  
   const ticker = req.params.ticker.toUpperCase();
-  try {
-    const cached = cache.get(ticker);
-    if (cached && cached.expiresAt > Date.now()) {
-      return res.json({ ...cached.result, cached: true });
+
+  const CACHE_KEY = `prediction:${ticker}`;
+
+    try {
+      const cached = await redis.get(CACHE_KEY);
+
+      if (cached ) {
+        console.log(`Redis cache HIT: ${ticker}`);
+        return res.json({ ...JSON.parse(cached), cached: true });
+      }
+      
+      console.log(`Redis CACHE MISS: ${ticker}`);
+
+      const result = await predictor.predictForTicker(ticker);
+      await redis.set(CACHE_KEY, JSON.stringify(result), { EX : CACHE_TTL });
+      res.json({ ...result, cached: false });
+    } catch (err) {
+      console.error(`Prediction failed for ${ticker}:`, err.message);
+      res.status(500).json({ error: err.message });
     }
-    console.log(`Received message for predicting ${ticker}`);
-    const result = await predictor.predictForTicker(ticker);
-    cache.set(ticker, { result, expiresAt: Date.now() + CACHE_TTL_MS });
-    res.json({ ...result, cached: false });
-  } catch (err) {
-    console.error(`Prediction failed for ${ticker}:`, err.message);
-    res.status(500).json({ error: err.message });
-  }
 };
 
 const health = (req, res) => res.json({ status: "ok" });
@@ -38,4 +46,4 @@ predictor
     process.exit(1);
   });
 
-module.exports={predict};
+module.exports={predict, health};

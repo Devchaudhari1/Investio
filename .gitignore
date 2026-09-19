@@ -2,3 +2,6 @@
 **/.next
 **/.npm
 **/.cache
+**/.env
+.env.*
+**/.env.local
